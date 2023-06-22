@@ -23,26 +23,26 @@ if __name__ == "__main__":
 	words = getWords()
 	resultTracker = TestTracker(0)
  
-	# try:
-	while True:
-		randomWord = random.choice(words)
-		morseWord  = ' '.join([morseDict[c] if c.isalnum() else '' for c in randomWord.lower()])
-		userGuess  = ""
-		tries = MAX_LIVES
-		print(f"Type this word in morse: {randomWord}")
-  
-		while tries > 0 and userGuess != morseWord:
-			#print(morseWord)
-			userGuess = input(f"({tries} left)\n")
-			tries -= 1
-				
-		if tries > 0:
-			resultTracker.incCount(1)
-			print(TestTracker.wrapColor("Correct", "OKGREEN"))
-		else:
-			resultTracker.incCount(0)
-			print(TestTracker.wrapColor("Incorrect. ", "ERRORRED") + f"\nThe awnser was: {morseWord}")
-   
-		print(resultTracker.getResults() + '\n')
-	# except:
-	# 	print("Closing...")
+	try:
+		while True:
+			randomWord = random.choice(words)
+			morseWord  = ' '.join([morseDict[c] if c.isalnum() else '' for c in randomWord.lower()])
+			userGuess  = ""
+			tries = MAX_LIVES
+			print(f"Type this word in morse: {randomWord}")
+	
+			while tries > 0 and userGuess != morseWord:
+				#print(morseWord)
+				userGuess = input(f"({tries} left)\n")
+				tries -= 1
+					
+			if tries > 0:
+				resultTracker.incCount(1)
+				print(TestTracker.wrapColor("Correct", "OKGREEN"))
+			else:
+				resultTracker.incCount(0)
+				print(TestTracker.wrapColor("Incorrect. ", "ERRORRED") + f"\nThe awnser was: {morseWord}")
+	
+			print(resultTracker.getResults() + '\n')
+	except:
+		print("Closing...")
